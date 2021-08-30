@@ -1,6 +1,22 @@
-# Digital Innovation One
+### Projeto Big Data usando o Google Cloud Platform (GCP). Configurar o Google Cloud Dataproc, um Hadoop totalmente gerenciado, usando seus créditos gratuitos da GCP.
 
-Código criado para utilização junto a plataforma da Digital Innovation One
+### Fluxo do desafio:
+
+<p align="center"><img src="./fluxoDesadio.png" width="500"></p>
+
+### A maoir parte do projeto(Desafio) é realizado no portal GCP, mas abaixo está em linha de comando(Cloud Shell) do gcloud para criar o ambiente(Cluster) Dataproc neste projeto:
+
+gcloud dataproc clusters create cluster-desafio-dataproc --enable-component-gateway --region us-central1 --subnet default --zone us-central1-c --master-machine-type n1-standard-4 --master-boot-disk-size 500 --num-workers 3 --worker-machine-type n1-standard-4 --worker-boot-disk-size 500 --image-version 2.0-debian10 --optional-components JUPYTER,ZEPPELIN,ZOOKEEPER --project cosmic-tensor-324421
+
+<h4>seu_usuario@cloudshell:~ (cosmic-tensor-324421)$ </h4> gcloud dataproc jobs submit spark \
+> --cluster=cluster-desafio-dataproc \
+> --region="us-central1" \
+> --class=org.apache.spark.examples.SparkPi \
+> --jars=file://usr/lib/spark/examples/jars/spark-examples.jar \
+> -- 1000
+
+
+# Abaixo uma rotina do projeto descrita pela o especialista Marcelo Marques:
 
 <p align="center"><img src="./DIO.png" width="500"></p>
 
@@ -32,10 +48,8 @@ O desafio consiste em efetuar um processamento de dados utilizando o produto Dat
 
 ---
 
-### Considerações Finais
+### Obeservação caso venha acontecer:
 
 NOTA: Se o Job mostrar um WARN de Interrupt, basta ignorar. Existe um bug no Hadoop que é conhecido. Isso não impacta no processamento.
 
-Qualquer outra dúvida, informação ou sugestão, fique a vontade para entrar em contato.
 
-marcelo@smarques.com
