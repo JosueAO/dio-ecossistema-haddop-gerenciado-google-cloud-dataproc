@@ -2,13 +2,13 @@
 
 ### Fluxo do desafio:
 
-<p align="center"><img src="./fluxoDesadio.png" width="500"></p>
+<p align="center"><img src="./fluxoDesafio.png" width="500"></p>
 
 ### A maoir parte do projeto(Desafio) é realizado no portal GCP, mas abaixo está em linha de comando(Cloud Shell) do gcloud para criar o ambiente(Cluster) Dataproc neste projeto:
 
 gcloud dataproc clusters create cluster-desafio-dataproc --enable-component-gateway --region us-central1 --subnet default --zone us-central1-c --master-machine-type n1-standard-4 --master-boot-disk-size 500 --num-workers 3 --worker-machine-type n1-standard-4 --worker-boot-disk-size 500 --image-version 2.0-debian10 --optional-components JUPYTER,ZEPPELIN,ZOOKEEPER --project cosmic-tensor-324421
 
-<h4>seu_usuario@cloudshell:~ (cosmic-tensor-324421)$ </h4> gcloud dataproc jobs submit spark \
+seu_usuario@cloudshell:~ (cosmic-tensor-324421)$  gcloud dataproc jobs submit spark \
 > --cluster=cluster-desafio-dataproc \
 > --region="us-central1" \
 > --class=org.apache.spark.examples.SparkPi \
